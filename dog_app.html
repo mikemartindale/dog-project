@@ -13812,6 +13812,19 @@ Percentage of dogs detected in dog_files_short:  100 %
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I began with inspiration from the CNN defined in the cifar10_augmentation project earlier in the course because it seemed to perform quite well in the exercise of classifying the CIFAR image set.</p>
+<p>Initially, I had 16 and 32 filters in the first 2 convolutional layers, respectively.  However, after reviewing the total parameters, I decided the number of parameters was far too great to be feasible.  I tried a few combinations of reducing the number of filters and adjusting the number of nodes in the first fully connected/dense layer.  In the end, I still thought my parameters were quite high, but that there would be enough for the network to begin to converge on a solution.</p>
+<p>I began conservatively with a single epoch both because I knew how long the CIFAR project had taken to train with far fewer parameters and because I hoped to get a hint at whether my architecture would approach the 1% accuracy goal.  This proved prudent since each of my epochs took more than 4 minutes to run and I was able to increase my accuracy merely by tripling the number of epochs in my final run.</p>
+<p>Despite the hint notes above, I was skeptical of "hint" architecture's small number of dense layers and the use of the global average pooling layer given what I'd seen in the state-of-the-art networks lecture which often seemed to have at least multiple dense layers.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
@@ -15024,6 +15037,17 @@ test_{network} = bottleneck_features['test']</code></pre>
 </code></pre>
 <p><strong>Question 5:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.</p>
 <p><strong>Answer:</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>My final CNN architecture was simply informed by the prior VGG example.  Given the impressive performance of that model and knowing that Inception is one of the state-of-the-art image classifiers, it seemed logical that merely building on the bottleneck features provided via transfer learning would provide most of the improvement in my effort.</p>
+<p>This architecture is suitable for the problem because the pre-trained Inception network is already optimized to extract relevant features from a broad set of images.  These features then merely need to be used to train the last two layers (the global average pooling layer and the fully connected/dense layer) to solve this particular dog breed classification problem.</p>
 
 </div>
 </div>
